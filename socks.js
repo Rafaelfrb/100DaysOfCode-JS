@@ -23,7 +23,7 @@ function sockSeparator(string) {
         socksC++;
     }
  }
-    console.log(Math.trunc((socksA/2) + (socksB/2) + (socksC/2)));
+    console.log(Math.trunc((socksA/2)) + Math.trunc((socksB/2)) + Math.trunc((socksC/2)));
 };
 
 sockSeparator(drawer1);
