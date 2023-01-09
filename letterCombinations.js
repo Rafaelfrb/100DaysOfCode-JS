@@ -5,45 +5,59 @@ input: digits = "23"
 output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf",]
 */
 
-function letterCombinations (input) {
-    let values = {
-        2 : ["a", "b", "c"],
-        3 : ["d", "e", "f"],
-        4 : ["g", "h", "i"],
-        5 : ["j", "k", "l"],
-        6 : ["m", "n", "o"],
-        7 : ["p", "q", "r", "s"],
-        8 : ["t", "u", "v"],
-        9 : ["w", "x", "y", "z"]
-    }
+function letterCombinations(digits) {
 
-    let newArray = [];
-    console.log(newArray);
+    const result = [];
 
-    if(input.includes('1') || input.includes('0')) {
-        return console.log("Please, only enter numbers between 2 and 9")
-    } else if (input.length > 4){
-        return console.log("Please, enter between 2 and 4 digits.")
-    }
-
-    let inputList = input.split(''); //['2', '3']
-    console.log(inputList);
-
-    for(let i = 0; i <= inputList.length; i++){
-        console.log(typeof inputList[i]);
-        console.log(`${values.inputList[i]}`);
-
-        //${Number(${inputList[i]})}}
+    const alpha = {
+        '2': 'abc',
+        '3': 'def',
+        '4': 'ghi',
+        '5': 'jkl',
+        '6': 'mno',
+        '7': 'pqrs',
+        '8': 'tuv',
+        '9': 'wxyz',
     };
 
-    
+    const dfs = (i, digits, slate) => {
+        if(i === digits.length) {
+            result.push(slate.join(''));
+            return;
+        }
+        
+        let chars = alpha[digits[i]];
+
+        for(let char of chars) {
+            slate.push(char);
+            dfs(i + 1, digits, slate);
+            slate.pop();
+        }
+    }
+
+    dfs(0, digits, []);
+    return result;
+};
+
+console.log(letterCombinations("23"));
 
 
 
 
 
-}
 
 
 
-letterCombinations('23');
+
+
+
+
+
+
+
+
+
+
+
+
+
